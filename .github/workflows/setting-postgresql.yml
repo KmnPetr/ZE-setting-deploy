@@ -24,3 +24,8 @@ jobs:
           script: |
             echo "Hello, World!"
             echo $(echo $MESSAGE)
+            cd /home/
+            git clone git@github.com:KmnPetr/ZE-setting-deploy.git ||
+            git clone git@github.com:KmnPetr/ZE-setting-deploy.git ||
+            git pull ||
+            git pull ||
