@@ -26,6 +26,10 @@ jobs:
             cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
             cd /home/ZE-setting-deploy/ && git pull || true
             
-            docker compose -f /home/ZE-setting-deploy/postgress-docker-compose.yaml up -d \
-            -e BD_PASSWORD = $(echo $BD_PASSWORD) \
-            -e BD_USER = $(echo $BD_USER)
+            export BD_PASSWORD=password
+            export DB_USER=user
+            
+            docker compose -f /home/ZE-setting-deploy/postgress-docker-compose.yaml up -d
+#            \
+#            -e BD_PASSWORD = $(echo $BD_PASSWORD) \
+#            -e BD_USER = $(echo $BD_USER)
