@@ -28,8 +28,7 @@ jobs:
             
             export BD_PASSWORD=password
             export DB_USER=user
-            
             docker compose -f /home/ZE-setting-deploy/postgress-docker-compose.yaml up -d
-#            \
-#            -e BD_PASSWORD = $(echo $BD_PASSWORD) \
-#            -e BD_USER = $(echo $BD_USER)
+            
+            echo $(echo $BD_PASSWORD)
+            echo $(echo $DB_USER)
