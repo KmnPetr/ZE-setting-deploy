@@ -1,0 +1,21 @@
+name: Setting-postgresql
+#starting only by manual command
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        #getting and checking the latest version of the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Up Postgresql
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DB_NODE }}
+          username: ${{ secrets.DB_NODE_USERNAME }}
+          password: ${{ secrets.DB_NODE_PASSWORD }}
+          script: |
+            docker ps -a || true
