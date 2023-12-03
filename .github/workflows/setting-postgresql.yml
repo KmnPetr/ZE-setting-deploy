@@ -2,6 +2,9 @@ name: Setting-postgresql
 #starting only by manual command
 on: workflow_dispatch
 
+env:
+  MESSAGE: "Hello, World!"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,5 +20,7 @@ jobs:
           host: ${{ secrets.DB_NODE_HOST }}
           username: ${{ secrets.DB_NODE_USERNAME }}
           password: ${{ secrets.DB_NODE_PASSWORD }}
+          envs: MESSAGE
           script: |
-            docker ps -a || true
+            echo "Hello, World!"
+            echo $(echo $MESSAGE)
