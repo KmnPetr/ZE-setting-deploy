@@ -26,5 +26,3 @@ jobs:
             echo $(echo $MESSAGE)
             cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
             cd /home/ZE-setting-deploy/ && git pull || true
-            cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
-            cd /home/ZE-setting-deploy/ && git pull || true
