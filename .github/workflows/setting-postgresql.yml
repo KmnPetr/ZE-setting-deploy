@@ -14,7 +14,7 @@ jobs:
       - name: Up Postgresql
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.DB_NODE }}
+          host: ${{ secrets.DB_NODE_HOST }}
           username: ${{ secrets.DB_NODE_USERNAME }}
           password: ${{ secrets.DB_NODE_PASSWORD }}
           script: |
