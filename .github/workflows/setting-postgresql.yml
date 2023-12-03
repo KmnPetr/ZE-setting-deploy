@@ -20,6 +20,7 @@ jobs:
           username: ${{ secrets.DB_NODE_USERNAME }}
           password: ${{ secrets.DB_NODE_PASSWORD }}
           envs: MESSAGE, BD_PASSWORD, BD_USER
+          #были проблемы с подвозом переменных в композ файл, поэтому запускаем базу без композа
           script: |
             docker run \
             --name ze_db \
