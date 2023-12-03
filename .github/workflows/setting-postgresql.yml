@@ -4,15 +4,14 @@ on: workflow_dispatch
 
 env:
   MESSAGE: "Hello, World!"
+  BD_PASSWORD: ${{secrets.BD_PASSWORD}}
+  BD_USER: ${{secrets.BD_USER}}
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-        #getting and checking the latest version of the repository
-      - name: Checkout
-        uses: actions/checkout@v2
 
       - name: Up Postgresql
         uses: appleboy/ssh-action@master
@@ -20,7 +19,7 @@ jobs:
           host: ${{ secrets.DB_NODE_HOST }}
           username: ${{ secrets.DB_NODE_USERNAME }}
           password: ${{ secrets.DB_NODE_PASSWORD }}
-          envs: MESSAGE
+          envs: MESSAGE, BD_PASSWORD, BD_USER
           script: |
             echo "Hello, World!"
             echo $(echo $MESSAGE)
