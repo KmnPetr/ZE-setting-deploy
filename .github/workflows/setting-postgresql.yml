@@ -23,9 +23,6 @@ jobs:
           script: |
             echo $(echo $MESSAGE)
 
-#            cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
-#            cd /home/ZE-setting-deploy/ && git pull || true
-
             docker run \
             --name ze_db \
             -e POSTGRES_PASSWORD=password \
