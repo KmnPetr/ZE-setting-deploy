@@ -22,13 +22,15 @@ jobs:
           envs: MESSAGE, BD_PASSWORD, BD_USER
           script: |
             echo $(echo $MESSAGE)
-            
-            cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
-            cd /home/ZE-setting-deploy/ && git pull || true
-            
-            BD_PASSWORD=password
-            DB_USER=user
-            docker compose -f /home/ZE-setting-deploy/postgress-docker-compose.yaml up -d
-            
-            echo $(echo $BD_PASSWORD)
-            echo $(echo $DB_USER)
+
+#            cd /home && git clone git@github.com:KmnPetr/ZE-setting-deploy.git || true
+#            cd /home/ZE-setting-deploy/ && git pull || true
+
+            docker run \
+            --name ze_db \
+            -e POSTGRES_PASSWORD=password \
+            -e POSTGRES_USER = user \
+            -p 5432:5432 \
+            -v ze_db:/var/lib/postgresql/data/ \
+            -d \
+            postgres:14.3-alpine
