@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  ze_db:
+    image: postgres:14.3-alpine
+    restart: always
+    container_name: ze_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD = ${BD_PASSWORD}
+      - POSTGRES_USER = ${BD_USER}
+    volumes:
+      - ze_db:/var/lib/postgresql/data/
+
+volumes:
+  ze_db:
