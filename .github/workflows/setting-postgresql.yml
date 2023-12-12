@@ -21,6 +21,8 @@ jobs:
           envs: MESSAGE, BD_PASSWORD, BD_USER
           #были проблемы с подвозом переменных в композ файл, поэтому запускаем базу без композа
           script: |
+            docker stop ze_db || true
+            docker rm ze_db || true
             docker run \
             --name ze_db \
             -e POSTGRES_PASSWORD=$(echo $BD_PASSWORD) \
