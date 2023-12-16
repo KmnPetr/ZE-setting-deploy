@@ -12,7 +12,14 @@ kubectl delete ValidatingWebhookConfiguration ingress-nginx-admission
 Создаем issuer
 Адрес на док ACME: https://cert-manager.io/docs/configuration/acme/
 надо скопировать ямлик
+делаем apply обоих файликов ClasterIssuer staging и продакшен
 
-
+k get clusterissuers (проверка их создания)
+k get sertificates
+k get certificaterequests
+k describe certificate
+k describe certificaterequests
+k get orders
+k get challenges
 
 
