@@ -6,6 +6,6 @@ helm upgrade --install ingress . --debug --atomic --timeout 300s
 helm uninstall ingress
 
 
-
+kubectl delete ValidatingWebhookConfiguration ingress-nginx-admission
 
 
