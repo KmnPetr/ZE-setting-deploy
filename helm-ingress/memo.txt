@@ -1,5 +1,4 @@
-Адрес инструкции по установке: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
-
+ямл взят с адреса https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/baremetal/deploy.yaml
 
 
 helm upgrade --install ingress . --debug --atomic --timeout 300s
