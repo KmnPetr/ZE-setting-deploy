@@ -1,1 +1,4 @@
+Сайт с док. установкой cert-manager: https://cert-manager.io/docs/installation/kubectl/
+скачал yaml по адресу: https://github.com/cert-manager/cert-manager/releases/download/v1.13.3/cert-manager.yaml
+
 helm upgrade --install cert-manager . --debug --atomic --timeout 300s

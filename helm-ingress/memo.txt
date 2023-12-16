@@ -8,4 +8,11 @@ helm uninstall ingress
 
 kubectl delete ValidatingWebhookConfiguration ingress-nginx-admission
 
+/////////////////////////////////////////////////
+Создаем issuer
+Адрес на док ACME: https://cert-manager.io/docs/configuration/acme/
+надо скопировать ямлик
+
+
+
 
