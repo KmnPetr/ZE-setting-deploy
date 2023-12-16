@@ -1,3 +1,12 @@
+Адрес инструкции по установке: https://docs.nginx.com/nginx-ingress-controller/installation/installing-nic/installation-with-helm/
+
+
+
 helm upgrade --install ingress . --debug --atomic --timeout 300s
 
 helm uninstall ingress
+
+
+
+
+
