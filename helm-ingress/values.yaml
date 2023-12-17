@@ -1,1 +1,7 @@
-nodePort_http:  30080
+nodePort:
+  http:  30080
+  https: 30443
+
+#вешаем поды непоследственно на сетьевые интерфейсы node
+# --->>> В том числе и на loopback!!! <<<---
+hostNetwork: true

@@ -353,12 +353,13 @@ spec:
       port: 80
       protocol: TCP
       targetPort: http
-      nodePort: {{ .Values.nodePort_http}}
+      nodePort: {{ .Values.nodePort.http }}
     - appProtocol: https
       name: https
       port: 443
       protocol: TCP
       targetPort: https
+      nodePort: {{ .Values.nodePort.https }}
   selector:
     app.kubernetes.io/component: controller
     app.kubernetes.io/instance: ingress-nginx
@@ -420,6 +421,7 @@ spec:
         app.kubernetes.io/part-of: ingress-nginx
         app.kubernetes.io/version: 1.8.2
     spec:
+      hostNetwork: {{ .Values.hostNetwork }}
       containers:
         - args:
             - /nginx-ingress-controller
