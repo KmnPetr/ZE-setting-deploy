@@ -2,3 +2,19 @@
 скачал yaml по адресу: https://github.com/cert-manager/cert-manager/releases/download/v1.13.3/cert-manager.yaml
 
 helm upgrade --install cert-manager . --debug --atomic --timeout 300s
+
+helm uninstall cert-manager
+
+/////////////////////////////////////////////////
+Создаем issuer
+Адрес на док ACME: https://cert-manager.io/docs/configuration/acme/
+надо скопировать ямлик
+делаем apply обоих файликов ClasterIssuer staging и продакшен
+
+k get clusterissuers (проверка их создания)
+k get certificates
+k get certificaterequests
+k describe certificate
+k describe certificaterequests
+k get orders
+k get challenges
