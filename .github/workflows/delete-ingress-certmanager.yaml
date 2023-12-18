@@ -11,25 +11,25 @@ jobs:
 
     steps:
 
-      - name: Delete Cert-manager
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.MASTER_NODE_HOST }}
-          username: ${{ secrets.MASTER_NODE_USERNAME }}
-          password: ${{ secrets.MASTER_NODE_PASSWORD }}
-          script: |
-            helm uninstall cert-manager
-
-
-      - name: Delete Ingress
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.MASTER_NODE_HOST }}
-          username: ${{ secrets.MASTER_NODE_USERNAME }}
-          password: ${{ secrets.MASTER_NODE_PASSWORD }}
-          script: |
-            helm uninstall ingress
-            
+#      - name: Delete Cert-manager
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.MASTER_NODE_HOST }}
+#          username: ${{ secrets.MASTER_NODE_USERNAME }}
+#          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+#          script: |
+#            helm uninstall cert-manager
+#
+#
+#      - name: Delete Ingress
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.MASTER_NODE_HOST }}
+#          username: ${{ secrets.MASTER_NODE_USERNAME }}
+#          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+#          script: |
+#            helm uninstall ingress
+#
 
       - name: Delete Secret Tls
         uses: appleboy/ssh-action@master
