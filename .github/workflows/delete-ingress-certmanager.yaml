@@ -39,4 +39,4 @@ jobs:
           password: ${{ secrets.MASTER_NODE_PASSWORD }}
           envs: SECRET_NAME, SECRET_NAMESPACE
           script: |
-            k delete secret app-tls -n default
+            kubectl delete secret app-tls -n default
