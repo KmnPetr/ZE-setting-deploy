@@ -26,6 +26,7 @@ jobs:
           password: ${{ secrets.MASTER_NODE_PASSWORD }}
           script: |
             helm upgrade --install ingress /home/ZE-setting-deploy/helm-ingress --debug --atomic --timeout 300s
+            sleep 60 || true
 
       - name: SetUp Cert-Manager
         uses: appleboy/ssh-action@master
@@ -35,6 +36,7 @@ jobs:
           password: ${{ secrets.MASTER_NODE_PASSWORD }}
           script: |
             helm upgrade --install cert-manager /home/ZE-setting-deploy/helm-cert-manager --debug --atomic --timeout 300s
+            sleep 60 || true
 
       - name: Apply ClusterIssuer
         uses: appleboy/ssh-action@master
@@ -44,6 +46,7 @@ jobs:
           password: ${{ secrets.MASTER_NODE_PASSWORD }}
           script: |
             kubectl apply -f /home/ZE-setting-deploy/issuer/ClasterIssuer.yaml
+            sleep 60 || true
 
       - name: Show Info
         uses: appleboy/ssh-action@master
