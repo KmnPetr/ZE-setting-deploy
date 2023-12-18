@@ -1,4 +1,4 @@
-name: Deploy_App
+name: setup-ingress-certmanager
 on: workflow_dispatch
 
 
