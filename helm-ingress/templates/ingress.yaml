@@ -332,6 +332,9 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 ---
+
+
+{{- if .Values.enableNodePort }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -366,6 +369,9 @@ spec:
     app.kubernetes.io/name: ingress-nginx
   type: NodePort
 ---
+{{- end }}
+
+
 apiVersion: v1
 kind: Service
 metadata:

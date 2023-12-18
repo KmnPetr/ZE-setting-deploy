@@ -1,0 +1,59 @@
+name: Deploy_App
+on: workflow_dispatch
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Git Pull On Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MASTER_NODE_HOST }}
+          username: ${{ secrets.MASTER_NODE_USERNAME }}
+          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+          script: |
+            git -C /home/ZE-setting-deploy pull
+
+
+      - name: SetUp Ingress Controller
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MASTER_NODE_HOST }}
+          username: ${{ secrets.MASTER_NODE_USERNAME }}
+          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+          script: |
+            helm upgrade --install ingress /home/ZE-setting-deploy/helm-ingress --debug --atomic --timeout 300s
+
+      - name: SetUp Cert-Manager
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MASTER_NODE_HOST }}
+          username: ${{ secrets.MASTER_NODE_USERNAME }}
+          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+          script: |
+            helm upgrade --install cert-manager /home/ZE-setting-deploy/helm-cert-manager --debug --atomic --timeout 300s
+
+      - name: Apply ClusterIssuer
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MASTER_NODE_HOST }}
+          username: ${{ secrets.MASTER_NODE_USERNAME }}
+          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+          script: |
+            kubectl apply -f /home/ZE-setting-deploy/issuer/ClasterIssuer.yaml
+
+      - name: Show Info
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.MASTER_NODE_HOST }}
+          username: ${{ secrets.MASTER_NODE_USERNAME }}
+          password: ${{ secrets.MASTER_NODE_PASSWORD }}
+          script: |
+            kubectl get clusterissuers || true
+            kubectl get certificates || true
+            kubectl get certificaterequests || true
+            kubectl get orders || true
+            kubectl get challenges || true
