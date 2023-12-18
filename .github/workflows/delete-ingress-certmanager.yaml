@@ -1,4 +1,4 @@
-name: Setting-postgresql
+name: delete-ingress-certmanager
 on: workflow_dispatch
 
 env:
