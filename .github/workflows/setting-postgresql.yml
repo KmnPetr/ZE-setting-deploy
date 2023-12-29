@@ -31,6 +31,3 @@ jobs:
             -v ze_db:/var/lib/postgresql/data/ \
             -d \
             postgres:14.3-alpine
-            
-            echo $(echo $BD_PASSWORD)
-            echo $(echo $BD_USER)
